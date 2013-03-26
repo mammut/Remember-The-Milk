@@ -4,35 +4,35 @@
 /**
  *
  */
-void nuevo_evento(evento *){
+void nuevo_evento(evento *e){
 
 }
 
 /**
  *
  */
-void mostrar_evento(evento *){
+void mostrar_evento(evento *e){
 
 }
 
 /**
  *
  */
-void eliminar_evento(evento *){
+void eliminar_evento(evento *e){
 
 }
 
 /**
  *
  */
-void modificar_evento(evento *){
+void modificar_evento(evento *e){
 
 }
 
 /**
  *
  */
-void concretar_evento(evento *){
+void concretar_evento(evento *e){
 
 }
 
