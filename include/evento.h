@@ -22,7 +22,7 @@ typedef void (*ptr_funcion)(evento *);
  *           asignada).*/
 void nuevo_evento(evento *);
 
-/* Obtiene y muestra por pantalla informacion de un evento determinado 
+/* Obtiene y muestra por pantalla informacion de un evento determinado
  * desde el registro de eventos.
  * PARAMS.: - e: puntero a evento inicializado (memoria previamente
  *           asignada).*/
@@ -43,7 +43,7 @@ void modificar_evento(evento *);
  *           asignada).*/
 void concretar_evento(evento *);
 
-/* Muestra por pantalla la lista de eventos disponibles en el registro 
+/* Muestra por pantalla la lista de eventos disponibles en el registro
  * de eventos.*/
 void listar_eventos();
 
