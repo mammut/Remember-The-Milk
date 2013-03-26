@@ -11,12 +11,13 @@ main.o: main.c
 	$(CC) main.c $(CFLAGS)
 
 libevento.o: evento.o
+	mkdir -p lib
 	ar rcs lib/libevento.a evento.o
 
 evento.o: include/evento.h evento.c
 	$(CC) $(CFLAGS) evento.c
 
 clean:
-	find . -name '*.a' -type f -delete
+	rm -r lib
 	find . -name '*.o' -type f -delete
 	rm tarea1
