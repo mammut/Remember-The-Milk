@@ -9,7 +9,10 @@ void nuevo_evento(evento *e){
 }
 
 /**
- *
+ * Obtiene y muestra por pantalla informacion de un evento determinado
+ * desde el registro de eventos.
+ * PARAMS.: - e: puntero a evento inicializado (memoria previamente
+ *           asignada).
  */
 void mostrar_evento(evento *e){
 	FILE *db;
