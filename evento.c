@@ -15,7 +15,7 @@ void mostrar_evento(evento *e){
 	FILE *db;
 	evento reader;
 
-	if ( (fopen("db.dat", "rb")) == NULL) {
+	if ( (db = fopen("db.dat", "rb")) == NULL) {
 		fprintf(stderr, "Error. No se pudo abrir el archivo 'db.dat'\n");
 		return;
 	}
