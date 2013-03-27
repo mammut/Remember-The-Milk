@@ -53,7 +53,7 @@ void modificar_evento(evento *e){
 			fseek(db, -sizeof(evento), SEEK_CUR);
 			fwrite(&reader, sizeof(evento), 1, db);
 			fclose(db);
-			printf("Evento #%d modificado exitosamente!", e->id);
+			printf("Evento #%d modificado exitosamente!\n", e->id);
 			return;
 		}
 	}
