@@ -20,6 +20,7 @@ typedef struct _evento {
  * de la aplicación.
  */
 typedef void (*ptr_funcion)(evento *);
+typedef void (*ptr_funcion2)();
 
 /**
  * Almacena un nuevo evento en el registro de eventos.
@@ -71,6 +72,7 @@ void vaciar_eventos();
 /**
  * Arreglo de punteros a funciones del nucleo.
  */
-extern ptr_funcion funciones_base[7];
+ extern ptr_funcion funciones_base[5];
+ extern ptr_funcion2 funciones_base2[2];
 
 #endif

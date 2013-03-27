@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include "include/evento.h"
 
+ptr_funcion funciones_base[5];
+ptr_funcion2 funciones_base2[2];
+
 /**
  * Almacena un nuevo evento en el registro de eventos.
  * Se lee el último registro del archivo, y se incrementa en 1 su ID

@@ -1,5 +1,5 @@
 #include "function.h"
-#include "include/evento.h">
+#include "include/evento.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -79,4 +79,15 @@ void parse_action(int counter, char *values[]){
 		default:
 			printf("Argumento inválido\n");
 	}
+}
+
+void inicializar() {
+	funciones_base[0] = &nuevo_evento;
+	funciones_base[1] = &mostrar_evento;
+	funciones_base[2] = &eliminar_evento;
+	funciones_base[3] = &modificar_evento;
+	funciones_base[4] = &concretar_evento;
+
+	funciones_base2[0] = &listar_eventos;
+	funciones_base2[1] = &vaciar_eventos;
 }
