@@ -26,6 +26,8 @@ void nuevo_evento(evento *e){
 	fwrite(e, sizeof(evento), 1, db);
 
 	fclose(db);
+
+	printf("Evento #%d creado exitosamente!\n", e->id);
 }
 
 /**
