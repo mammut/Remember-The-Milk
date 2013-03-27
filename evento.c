@@ -194,8 +194,17 @@ void listar_eventos(){
 }
 
 /**
- *
+ * Elimina el registro de eventos.
  */
 void vaciar_eventos(){
+	FILE *db;
 
+	if ( (db = fopen("db.dat", "wb")) == NULL) {
+		fprintf(stderr, "Error. No se pudo abrir el archivo 'db.dat'\n");
+		return;
+	}
+
+	fclose(db);
+
+	printf("El registro de eventos ha sido eliminado!\n");
 }
