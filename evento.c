@@ -26,7 +26,7 @@ void mostrar_evento(evento *e){
 	while (fread(&reader, sizeof(evento), 1, db) == 1) {
 		if (reader.id == e->id) {
 			printf("Evento #%d :: %s\n", reader.id,reader.titl);
-			printf("Este es un evento\n");
+			printf("%s\n", reader.desc);
 			printf("%s\n", reader.estado == 0 ? "No Realizado" : "Realizado");
 			fclose(db);
 			return;
