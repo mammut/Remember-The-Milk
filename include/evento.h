@@ -9,10 +9,10 @@
  *         - estado: estado del evento.
  */
 typedef struct _evento {
-  int id;
-  char titl[60];
-  char desc[120];
-  int estado;
+	int id;
+	char titl[60];
+	char desc[120];
+	int estado;
 } evento;
 
 /**
