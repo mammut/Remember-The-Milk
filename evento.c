@@ -55,4 +55,6 @@ void vaciar_eventos(){
 	}
 
 	fclose(db);
+
+	printf("El registro de eventos ha sido eliminado!\n");
 }
