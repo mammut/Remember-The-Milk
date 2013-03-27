@@ -37,7 +37,8 @@ void parse_action(int counter, char *values[]){
 		case 4:
 			sprintf(e.titl, "%s", values[2]);
 			sprintf(e.desc, "%s", values[3]);
-			e.id = atoi(values[2]);
+			e.id = 0;
+			e.estado = 0;
 			if ( ! strcmp("new", values[1]))
 				nuevo_evento(&e);
 			else
