@@ -6,6 +6,7 @@
 
 void parse_action(int counter, char *values[]){
 	evento e;
+	int run;
 
 	switch(counter) {
 		case 1:
@@ -15,9 +16,9 @@ void parse_action(int counter, char *values[]){
 
 		case 2:
 			if ( ! strcmp("list", values[1]))
-				listar_eventos();
+				run = 0;
 			else if ( ! strcmp("clear", values[1]))
-				vaciar_eventos();
+				run = 1;
 			else
 				printf("Argumento inválido\n");
 			break;
@@ -25,11 +26,11 @@ void parse_action(int counter, char *values[]){
 		case 3:
 			e.id = atoi(values[2]);
 			if ( ! strcmp("do", values[1]))
-				concretar_evento(&e);
+				run = 6;
 			else if ( ! strcmp("get", values[1]))
-				mostrar_evento(&e);
+				run = 3;
 			else if ( ! strcmp("delete", values[1]))
-				eliminar_evento(&e);
+				run = 4;
 			else
 				printf("Argumento inválido\n");
 			break;
@@ -40,7 +41,7 @@ void parse_action(int counter, char *values[]){
 			e.id = 0;
 			e.estado = 0;
 			if ( ! strcmp("new", values[1]))
-				nuevo_evento(&e);
+				run = 2;
 			else
 				printf("Argumento inválido\n");
 			break;
@@ -58,7 +59,7 @@ void parse_action(int counter, char *values[]){
 						e.estado = 3;
 						sprintf(e.desc, "%s", values[4]);
 				}
-				modificar_evento(&e);
+				run = 5;
 			}
 			else
 				printf("Argumento inválido\n");
@@ -70,7 +71,7 @@ void parse_action(int counter, char *values[]){
 				e.estado = 4;
 				sprintf(e.titl, "%s", values[4]);
 				sprintf(e.desc, "%s", values[5]);
-				modificar_evento(&e);
+				run = 5;
 			}else {
 				printf("Argumento inválido\n");
 			}
@@ -79,15 +80,16 @@ void parse_action(int counter, char *values[]){
 		default:
 			printf("Argumento inválido\n");
 	}
+
+	funciones_base[run](&e);
 }
 
 void inicializar() {
-	funciones_base[0] = &nuevo_evento;
-	funciones_base[1] = &mostrar_evento;
-	funciones_base[2] = &eliminar_evento;
-	funciones_base[3] = &modificar_evento;
-	funciones_base[4] = &concretar_evento;
-
-	funciones_base2[0] = &listar_eventos;
-	funciones_base2[1] = &vaciar_eventos;
+	funciones_base[0] = &listar_eventos;
+	funciones_base[1] = &vaciar_eventos;
+	funciones_base[2] = &nuevo_evento;
+	funciones_base[3] = &mostrar_evento;
+	funciones_base[4] = &eliminar_evento;
+	funciones_base[5] = &modificar_evento;
+	funciones_base[6] = &concretar_evento;
 }

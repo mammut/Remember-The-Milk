@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include "include/evento.h"
 
-ptr_funcion funciones_base[5];
-ptr_funcion2 funciones_base2[2];
+ptr_funcion funciones_base[7];
 
 /**
  * Almacena un nuevo evento en el registro de eventos.
@@ -181,7 +180,7 @@ void concretar_evento(evento *e){
 /**
  *
  */
-void listar_eventos(){
+void listar_eventos(evento *e){
 	FILE *db;
 	evento reader;
 	int printed = 0;
@@ -206,7 +205,7 @@ void listar_eventos(){
 /**
  * Elimina el registro de eventos.
  */
-void vaciar_eventos(){
+void vaciar_eventos(evento *e){
 	FILE *db;
 
 	if ( (db = fopen("db.dat", "wb")) == NULL) {
