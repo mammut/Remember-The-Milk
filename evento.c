@@ -180,7 +180,7 @@ void concretar_evento(evento *e){
 /**
  *
  */
-void listar_eventos(evento *e){
+void listar_eventos(){
 	FILE *db;
 	evento reader;
 	int printed = 0;
@@ -205,7 +205,7 @@ void listar_eventos(evento *e){
 /**
  * Elimina el registro de eventos.
  */
-void vaciar_eventos(evento *e){
+void vaciar_eventos(){
 	FILE *db;
 
 	if ( (db = fopen("db.dat", "wb")) == NULL) {

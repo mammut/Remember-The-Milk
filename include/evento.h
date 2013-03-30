@@ -61,12 +61,12 @@ void concretar_evento(evento *);
  * Muestra por pantalla la lista de eventos disponibles en el registro
  * de eventos.
  */
-void listar_eventos(evento *e);
+void listar_eventos();
 
 /**
  * Elimina el registro de eventos.
  */
-void vaciar_eventos(evento *e);
+void vaciar_eventos();
 
 /**
  * Arreglo de punteros a funciones del nucleo.
