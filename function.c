@@ -1,9 +1,15 @@
-#include "function.h"
+#include "include/function.h"
 #include "include/evento.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
+/**
+ * Parsea los argumentos entregados por consola.
+ * segun esto se ejecutara alguna funcion del indice
+ * del arreglo de funciones. Es la variable run quien
+ * dicta que funcion ejecutar.
+ */
 void parse_action(int counter, char *values[]){
 	evento e;
 	int run;
@@ -84,6 +90,11 @@ void parse_action(int counter, char *values[]){
 	funciones_base[run](&e);
 }
 
+/**
+ * Inicializa el arreglo de punteros a funciones asignando
+ * a cada indice una funcion. Luego este arreglo se utiliza
+ * desde el parseador.
+ */
 void inicializar() {
 	funciones_base[0] = &listar_eventos;
 	funciones_base[1] = &vaciar_eventos;

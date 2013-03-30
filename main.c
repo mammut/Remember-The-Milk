@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include "include/evento.h"
-#include "function.h"
+#include "include/function.h"
 
 int main(int argc, char *argv[])
 {

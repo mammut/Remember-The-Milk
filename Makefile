@@ -10,7 +10,7 @@ tarea1: main.o libevento.o function.o
 main.o: main.c
 	$(CC) main.c $(CFLAGS)
 
-function.o: function.c function.h
+function.o: function.c include/function.h
 	$(CC) $(CFLAGS) $<
 
 libevento.o: evento.o
