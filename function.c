@@ -16,7 +16,7 @@ void parse_action(int counter, char *values[]){
 
 	switch(counter) {
 		case 1:
-			fprintf(stderr, "Error. Debe ingresar los arguentos\n");
+			fprintf(stderr, "Error. Debe ingresar los argumentos\n");
 			return;
 			break;
 

@@ -178,7 +178,7 @@ void concretar_evento(evento *e){
 }
 
 /**
- *
+ * Muestra la lista de eventos.
  */
 void listar_eventos(){
 	FILE *db;
@@ -194,7 +194,7 @@ void listar_eventos(){
 	while ( fread(&reader, sizeof(evento), 1, db) == 1) {
 		if (printed++ == 0)	printf("ID | Titulo | Estado\n");
 
-		printf("%d | %s | %s\n", reader.id, reader.titl, reader.estado == 1 ? "Realizado" : "No realiado");
+		printf("%d | %s | %s\n", reader.id, reader.titl, reader.estado == 1 ? "Realizado" : "No realizado");
 	}
 	if (printed == 0)
 		printf("No hay eventos en el registro!\n");
