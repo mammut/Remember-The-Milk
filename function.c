@@ -12,12 +12,12 @@
  */
 void parse_action(int counter, char *values[]){
 	evento e;
-	int run;
+	int run = -1;
+	int error = -1;
 
 	switch(counter) {
 		case 1:
 			fprintf(stderr, "Error. Debe ingresar los argumentos\n");
-			return;
 			break;
 
 		case 2:
@@ -26,7 +26,7 @@ void parse_action(int counter, char *values[]){
 			else if ( ! strcmp("clear", values[1]))
 				run = 1;
 			else
-				printf("Argumento inválido\n");
+				error = 0;
 			break;
 
 		case 3:
@@ -38,56 +38,67 @@ void parse_action(int counter, char *values[]){
 			else if ( ! strcmp("delete", values[1]))
 				run = 4;
 			else
-				printf("Argumento inválido\n");
+				error = 0;
 			break;
-
 		case 4:
-			sprintf(e.titl, "%s", values[2]);
-			sprintf(e.desc, "%s", values[3]);
+			snprintf(e.titl, sizeof(char)*60, "%s", values[2]);
+			snprintf(e.desc, sizeof(char)*120, "%s", values[3]);
 			e.id = 0;
 			e.estado = 0;
-			if ( ! strcmp("new", values[1]))
+			if ( ! strcmp("new", values[1])) 
 				run = 2;
-			else
-				printf("Argumento inválido\n");
+			else 
+				error = 0;
 			break;
-
 		case 5:
-			if ( ! strcmp("update", values[1]) && ( ! strcmp("-t", values[3]) ||  ! strcmp("-d", values[3]))) {
-				e.id = atoi(values[2]);
-				switch(values[3][1]) {
-					case 't':
-						e.estado = 2;
-						sprintf(e.titl, "%s", values[4]);
-						break;
+			if ( ! strcmp("update", values[1])){
+				if ( ! strcmp("-t", values[3]) ||  ! strcmp("-d", values[3])) {
+					e.id = atoi(values[2]);
+					switch(values[3][1]) {
+						case 't':
+							e.estado = 2;
+							snprintf(e.titl, sizeof(char)*60, "%s", values[4]);
+							break;
 
-					case 'd':
-						e.estado = 3;
-						sprintf(e.desc, "%s", values[4]);
-				}
-				run = 5;
-			}
-			else
-				printf("Argumento inválido\n");
+						case 'd':
+							e.estado = 3;
+							snprintf(e.desc, sizeof(char)*120, "%s", values[4]);
+					}
+					run = 5;
+				} else
+					error = 1;
+			} else
+				error = 0;
 			break;
-
 		case 6:
-			if ( ! strcmp("update", values[1]) && ! strcmp("-b", values[3])) {
-				e.id = atoi(values[2]);
-				e.estado = 4;
-				sprintf(e.titl, "%s", values[4]);
-				sprintf(e.desc, "%s", values[5]);
-				run = 5;
-			}else {
-				printf("Argumento inválido\n");
-			}
+			if ( ! strcmp("update", values[1])){
+				if ( ! strcmp("-b", values[3])) {
+					e.id = atoi(values[2]);
+					e.estado = 4;
+					snprintf(e.titl, sizeof(char)*60, "%s", values[4]);
+					snprintf(e.desc, sizeof(char)*120, "%s", values[5]);
+					run = 5;
+				} else 
+					error = 1;
+			} else
+				error = 0;
 			break;
-
-		default:
-			printf("Argumento inválido\n");
 	}
 
-	funciones_base[run](&e);
+	if (run >= 0) {
+		funciones_base[run](&e);
+	} else if (error >= 0) {
+		switch(error){
+			case 0: 
+				fprintf(stderr, "El comando seleccionado no existe.\nComandos válidos: new, get, delete, update, do, list, clear.\n"); 
+				break;
+			case 1:
+				fprintf(stderr, "Argumentos para el comando 'update' no reconocido.\n");
+				break;
+			default:
+				fprintf(stderr, "Error desconocido.\n");
+		}
+	}
 }
 
 /**
