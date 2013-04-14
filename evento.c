@@ -2,7 +2,7 @@
 #include <string.h>
 #include "include/evento.h"
 
-ptr_funcion funciones_base[7];
+ptr_funcion funciones_base[7] = {&listar_eventos, &vaciar_eventos, &nuevo_evento, &mostrar_evento, &eliminar_evento, &modificar_evento, &concretar_evento};
 
 /**
  * Almacena un nuevo evento en el registro de eventos.
@@ -193,7 +193,7 @@ void listar_eventos(){
 		db = fopen("db.dat", "wb");
 		if ( (db = fopen("db.dat", "rb")) == NULL) {
 			fprintf(stderr, "Error. No se pudo abrir el archivo 'db.dat'\n");
-			return;	
+			return;
 		}
 	}
 
@@ -210,7 +210,7 @@ void listar_eventos(){
 
 	while ( fread(&reader, sizeof(evento), 1, db) == 1) {
 		if (printed++ == 0)	printf("ID | %*s | Estado\n", title_length+1, "Título");
-		
+
 		//Como los acentos son caracteres "anchos", ocupan más espacio
 		//en la lectura del largo del string y tienen que ser divididos.
 		acentos = 0;

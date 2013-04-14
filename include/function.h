@@ -3,6 +3,5 @@
 
 void parse_action(int, char **);
 int comando_valido(char *);
-void inicializar();
 
 #endif

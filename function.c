@@ -52,9 +52,9 @@ void parse_action(int counter, char *values[]){
 			snprintf(e.desc, sizeof(char)*120, "%s", values[3]);
 			e.id = 0;
 			e.estado = 0;
-			if ( ! strcmp("new", values[1])) 
+			if ( ! strcmp("new", values[1]))
 				run = 2;
-			else 
+			else
 				error = 0;
 			break;
 		case 5:
@@ -86,7 +86,7 @@ void parse_action(int counter, char *values[]){
 			if ( ! strcmp("update", values[1])){
 				if ( ! strcmp("-b", values[3])) {
 					if((e.id = atoi(values[2]))
-					 == 0) 
+					 == 0)
 						error = 3;
 					else {
 						e.estado = 4;
@@ -94,7 +94,7 @@ void parse_action(int counter, char *values[]){
 						snprintf(e.desc, sizeof(char)*120, "%s", values[5]);
 						run = 5;
 					}
-				} else 
+				} else
 					error = 1;
 			} else
 				error = 0;
@@ -105,8 +105,8 @@ void parse_action(int counter, char *values[]){
 		funciones_base[run](&e);
 	} else if (error >= 0) {
 		switch(error){
-			case 0: 
-				fprintf(stderr, "El comando seleccionado no existe.\nComandos válidos: new, get, delete, update, do, list, clear.\n"); 
+			case 0:
+				fprintf(stderr, "El comando seleccionado no existe.\nComandos válidos: new, get, delete, update, do, list, clear.\n");
 				break;
 			case 1:
 				fprintf(stderr, "Argumentos para el comando 'update' no reconocido.\n");
@@ -144,19 +144,4 @@ int comando_valido(char *value){
 		return 6;
 	}
 	return -1;
-}
-
-/**
- * Inicializa el arreglo de punteros a funciones asignando
- * a cada indice una funcion. Luego este arreglo se utiliza
- * desde el parseador.
- */
-void inicializar() {
-	funciones_base[0] = &listar_eventos;
-	funciones_base[1] = &vaciar_eventos;
-	funciones_base[2] = &nuevo_evento;
-	funciones_base[3] = &mostrar_evento;
-	funciones_base[4] = &eliminar_evento;
-	funciones_base[5] = &modificar_evento;
-	funciones_base[6] = &concretar_evento;
 }
